@@ -1,0 +1,38 @@
+/*
+ */
+package crear.fecha;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+/**
+ *
+ * @author Juanchoo24
+ */
+public class CrearFecha {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int year = 1942;
+        LocalDate fechaAmerica = LocalDate.of(year, 10, 12);
+        boolean isLeapYear = fechaAmerica.isLeapYear();
+        DateTimeFormatter formatoESP = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = fechaAmerica.format(formatoESP);
+        System.out.println(formattedDate);
+        System.out.println("-----------------------");
+
+        LocalDate currentDate = LocalDate.now();
+        long daysBetween = ChronoUnit.DAYS.between(fechaAmerica, currentDate);
+        System.out.println("Han pasado " + daysBetween + " dias desde que colon descubrio America");
+        System.out.println("-----------------------");
+        if (isLeapYear) {
+            System.out.println("el año " + year + " fue un año bisiesto");
+        }else {
+            System.out.println("el año " + year + " no fue año bisiesto");
+        }
+    }
+
+}
